@@ -1,0 +1,18 @@
+
+.display {
+    margin-top: 10%;
+    margin-right: auto;
+    margin-left: auto;
+    background: #2a638f;
+    border-radius: 20px;
+    color: black;
+    font-size: 100px;
+    text-align: center;
+    width: 280px;
+    height: 140px;
+}
+
+.error {
+    color: red;
+}
+
