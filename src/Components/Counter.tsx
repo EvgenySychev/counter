@@ -1,32 +1,41 @@
-import React, {useState} from "react";
-import {Button} from "./Button";
+import React from "react";
 import s from "./Counter.module.css"
 import {Display} from "./Display";
+import {ButtonAreaOfCounter} from "./ButtonAreaOfCounter";
 
-export function Counter() {
+type CounterPropsType = {
+    maxValue:number
+    startValue:number
+    counter:number
+    setCounter:(counter:number)=>void
+    setButtonIndicator:boolean
+}
 
-    let [counter, setCounter] = useState<number>(0)
+export function Counter(props:CounterPropsType) {
+
+    let counter = props.counter
 
     const callBack = (nameOfButton: 'inc' | 'reset') => {
 
-        if (counter < 5) {
-            nameOfButton === 'inc' ? counter++ : counter = 0
-           }
+        if (counter < props.maxValue) {
+            nameOfButton === 'inc' ? counter++  : counter = props.startValue
+        }
 
         if (nameOfButton === 'reset') {
-            counter = 0
-           }
-        setCounter(counter)
+            counter = props.startValue
+        }
+        props.setCounter(counter)
     }
+
     return (
         <div className={s.counter}>
             <div>
-                <Display counter={counter}/>
+                <Display counter={props.counter} maxValue = {props.maxValue} setButtonIndicator={props.setButtonIndicator} />
             </div>
-            <div className={s.buttonBlock}>
-                <Button name={'inc'} callBack={() => callBack('inc')} disabled={counter === 5}/>
-                <Button name={'reset'} callBack={() => callBack('reset')} disabled={counter === 0}/>
+            <div>
+                <ButtonAreaOfCounter counter={props.counter} maxValue={props.maxValue} startValue={props.startValue} callBack={callBack}/>
             </div>
+
         </div>
     )
 }

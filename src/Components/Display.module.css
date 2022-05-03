@@ -14,5 +14,16 @@
 
 .error {
     color: red;
+    font-size: 100px;
+    margin-top: 10%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.startMessage {
+    color: black;
+    margin-top: 10%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
 }
 

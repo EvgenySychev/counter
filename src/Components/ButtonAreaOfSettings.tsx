@@ -1,10 +1,13 @@
 import {Button} from "./Button";
 import s from "./ButtonAreaOfSettings.module.css"
 
+type ButtonAreaOfSettingsPropsType = {
+    setButton: () => void
+}
 
-export function ButtonAreaOfSettings () {
+export function ButtonAreaOfSettings (props:ButtonAreaOfSettingsPropsType) {
     const setButtonHandler= () => {
-        console.log('set was pushed')
+        props.setButton()
     }
 
     return (

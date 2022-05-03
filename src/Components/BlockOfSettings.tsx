@@ -1,19 +1,25 @@
 import s from "./BlockOfSettings.module.css"
+import {Input} from "./Input";
 
-export function BlockOfSettings() {
+type BlockOfSettingsPropsType = {
+    callBackMaxValue: (maxInputValue:string) => void
+    callBackStartValue: (startInputValue:string) => void
+}
+
+export function BlockOfSettings(props:BlockOfSettingsPropsType) {
     return (
         <div className={s.display}>
             <div>
-            <span>
-                max value
+                <span>
+                    max value
                 </span>
-                <input type={"number"}/>
+                <Input callBack={props.callBackMaxValue}/>
             </div>
             <div>
                 <span>
-                start value
+                    start value
                 </span>
-                <input type={"number"}/>
+                <Input callBack={props.callBackStartValue}/>
             </div>
         </div>
     )
