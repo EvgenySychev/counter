@@ -11,3 +11,7 @@
     width: 280px;
     height: 140px;
 }
+
+.error {
+    border: red 1px solid;
+}

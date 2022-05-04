@@ -9,7 +9,7 @@ type InputPropsType = {
 export function Input (props:InputPropsType) {
     const onChangeInputHandler = (e:ChangeEvent<HTMLInputElement>) => {
         props.callBack (e.currentTarget.value)
-    }
+        }
 
     return (
         <input type={"number"} className={props.inputClass} onChange={onChangeInputHandler}/>

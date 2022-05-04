@@ -8,7 +8,7 @@ type CounterPropsType = {
     startValue:number
     counter:number
     setCounter:(counter:number)=>void
-    setButtonIndicator:boolean
+    buttonIndicator:boolean
 }
 
 export function Counter(props:CounterPropsType) {
@@ -30,10 +30,11 @@ export function Counter(props:CounterPropsType) {
     return (
         <div className={s.counter}>
             <div>
-                <Display counter={props.counter} maxValue = {props.maxValue} setButtonIndicator={props.setButtonIndicator} />
+                <Display counter={props.counter} maxValue = {props.maxValue} buttonIndicator={props.buttonIndicator} />
             </div>
             <div>
-                <ButtonAreaOfCounter counter={props.counter} maxValue={props.maxValue} startValue={props.startValue} callBack={callBack}/>
+                <ButtonAreaOfCounter counter={props.counter} maxValue={props.maxValue} startValue={props.startValue} callBack={callBack}
+                buttonIndicator={props.buttonIndicator}/>
             </div>
 
         </div>

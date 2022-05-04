@@ -4,8 +4,11 @@ import s from "./SettingsOfCounter.module.css"
 
 type SettingsOfCounterPropsType = {
     callBackMaxValue: (maxInputValue: string) => void
-    startInputValue: (startInputValue: string) => void
+    callBackStartValue: (startInputValue: string) => void
     setValue: () => void
+    buttonIndicator:boolean
+    startInputValue:number
+    maxInputValue:number
 }
 
 export function SettingsOfCounter(props: SettingsOfCounterPropsType) {
@@ -15,11 +18,14 @@ export function SettingsOfCounter(props: SettingsOfCounterPropsType) {
             <div>
                 <BlockOfSettings
                     callBackMaxValue={props.callBackMaxValue}
-                    callBackStartValue={props.startInputValue}
+                    callBackStartValue={props.callBackStartValue}
+                    startInputValue={props.startInputValue}
+                    maxInputValue={props.maxInputValue}
                 />
             </div>
             <div className={s.buttonAreaOfSettings}>
-                <ButtonAreaOfSettings setButton={props.setValue}/>
+                <ButtonAreaOfSettings setButton={props.setValue}
+                                      buttonIndicator={props.buttonIndicator}/>
             </div>
         </div>
     )
