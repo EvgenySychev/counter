@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import {CounterAndSettings} from "./Components/CounterAndSettings";
 
@@ -6,7 +6,7 @@ import {CounterAndSettings} from "./Components/CounterAndSettings";
 function App() {
 
     return (
-        <div>
+        <div className= "App">
             <CounterAndSettings/>
         </div>
     );

@@ -1,17 +1,17 @@
-import {BlockOfSettings} from "./BlockOfSettings";
-import {ButtonAreaOfSettings} from "./ButtonAreaOfSettings";
-import s from "./SettingsOfCounter.module.css"
+import {BlockOfSettings} from "./BlockOfSettings/BlockOfSettings";
+import {ButtonAreaOfSettings} from "./ButtonAreaOfSettings/ButtonAreaOfSettings";
+import s from "./Settings.module.css"
 
-type SettingsOfCounterPropsType = {
+type SettingsPropsType = {
     callBackMaxValue: (maxInputValue: string) => void
     callBackStartValue: (startInputValue: string) => void
     setValue: () => void
-    buttonIndicator:boolean
-    startInputValue:number
-    maxInputValue:number
+    buttonIndicator: boolean
+    startInputValue: number
+    maxInputValue: number
 }
 
-export function SettingsOfCounter(props: SettingsOfCounterPropsType) {
+export function Settings(props: SettingsPropsType) {
 
     return (
         <div className={s.settingsOfCounter}>
@@ -24,8 +24,9 @@ export function SettingsOfCounter(props: SettingsOfCounterPropsType) {
                 />
             </div>
             <div className={s.buttonAreaOfSettings}>
-                <ButtonAreaOfSettings setButton={props.setValue}
-                                      buttonIndicator={props.buttonIndicator}/>
+                <ButtonAreaOfSettings
+                    setButton={props.setValue}
+                    buttonIndicator={props.buttonIndicator}/>
             </div>
         </div>
     )

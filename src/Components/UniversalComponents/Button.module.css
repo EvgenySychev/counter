@@ -1,0 +1,29 @@
+
+.button {
+    display: inline-block;
+    font-size: 25px;
+    width: 125px;
+    height: 45px;
+    background: #002030;
+    border: 3px solid cadetblue;
+    color: cadetblue;
+    border-radius: 15px;
+    margin: 10px 7.5px 10px 7.5px;
+    transition: 0.2s;
+    box-shadow: 0 2px 5px black;
+}
+
+button:disabled,
+button[disabled]{
+    display: inline-block;
+    font-size: 25px;
+    width: 125px;
+    height: 45px;
+    background: dimgray;
+    border: 3px solid cadetblue;
+    color: cadetblue;
+    border-radius: 15px;
+    margin: 10px 7.5px 10px 7.5px;
+    transition: 0.2s;
+    box-shadow: 0 2px 5px black;
+}

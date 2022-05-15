@@ -1,4 +1,4 @@
-import {Button} from "./Button";
+import {Button} from "../../UniversalComponents/Button";
 import s from "./ButtonAreaOfSettings.module.css"
 
 type ButtonAreaOfSettingsPropsType = {

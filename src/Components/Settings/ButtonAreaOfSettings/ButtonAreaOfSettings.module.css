@@ -1,14 +1,7 @@
-
-
-.counterAndSettings {
+.buttonArea {
     display: flex;
     align-items: center;
-
-
+    justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
-    width: 700px;
-    height: 200px;
-
 }
