@@ -10,8 +10,6 @@ export function CounterAndSettings() {
     const [startInputValue, setStartInputValue] = useState<number>(0)
     const [counter, setCounter] = useState<number>(0)
     const [buttonIndicator, setButtonIndicator] = useState<boolean>(true)
-    const [error, setError] = useState<boolean>(false)
-
 
     useEffect(() => {
         let startValueAsString = localStorage.getItem('startValue')
@@ -30,26 +28,16 @@ export function CounterAndSettings() {
             setCounter(newValue)
         }
     }, [])
-    /*useEffect(() => {
-        localStorage.setItem('maxValue', JSON.stringify(maxInputValue))
-        localStorage.setItem('startValue', JSON.stringify(startInputValue))
-    }, [startInputValue, maxInputValue])*/
 
     const callBackMaxValue = (max: string) => {
         let maxValue = Number(max)
         setMaxInputValue(maxValue)
         setButtonIndicator(false)
-        /*if (maxInputValue<=startInputValue) {
-            setError(true)
-        }*/
     }
     const callBackStartInputValue = (start: string) => {
         let startValue = Number(start)
         setStartInputValue(startValue)
         setButtonIndicator(false)
-        /*if (startInputValue<0) {
-            setError(true)
-        }*/
     }
     const setValue = () => {
         setButtonIndicator(true)
@@ -60,10 +48,6 @@ export function CounterAndSettings() {
     const setCounterHandler = (c: number) => {
         setCounter(c)
     }
-    /*const errorSwitcher = () => {
-        maxInputValue <= startInputValue ? setError(true) : setError(false)
-        startInputValue <0 ? setError(true) : setError(false)
-    }*/
 
     return (
         <div className={s.counterAndSettings}>
@@ -81,7 +65,6 @@ export function CounterAndSettings() {
                 startValue={startInputValue}
                 setCounter={setCounterHandler}
                 buttonIndicator={buttonIndicator}
-                error={error}
             />
         </div>
     )

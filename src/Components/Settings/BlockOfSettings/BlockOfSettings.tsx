@@ -21,7 +21,7 @@ export function BlockOfSettings(props: BlockOfSettingsPropsType) {
                 </span>
                 <Input
                     callBack={props.callBackMaxValue}
-                    inputClass={props.maxInputValue < props.startInputValue ? `${s.error}` : ''}
+                    inputClass={props.maxInputValue <= props.startInputValue ? `${s.error}` : `${s.input}`}
                     value={strMaxInputValue}
                 />
             </div>
@@ -31,7 +31,7 @@ export function BlockOfSettings(props: BlockOfSettingsPropsType) {
                 </span>
                 <Input
                     callBack={props.callBackStartValue}
-                    inputClass={props.startInputValue < 0 ? `${s.error}` : ''}
+                    inputClass={props.startInputValue < 0 ? `${s.error}` : `${s.input}`}
                     value={strStartInputValue}
                 />
             </div>

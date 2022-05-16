@@ -2,7 +2,6 @@ import s from "../Counter.module.css";
 import {Button} from "../../UniversalComponents/Button";
 import React from "react";
 
-
 type ButtonAreaOfCounterPropsType = {
     counter: number
     maxValue: number
@@ -12,8 +11,6 @@ type ButtonAreaOfCounterPropsType = {
     }
 
 export function ButtonAreaOfCounter (props:ButtonAreaOfCounterPropsType) {
-
-
 
     return (
         <div className={s.buttonBlock}>

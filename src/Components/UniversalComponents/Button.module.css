@@ -10,7 +10,7 @@
     border-radius: 15px;
     margin: 10px 7.5px 10px 7.5px;
     transition: 0.2s;
-    box-shadow: 0 2px 5px black;
+    box-shadow: 0 2px 2px white;
 }
 
 button:disabled,
@@ -25,5 +25,5 @@ button[disabled]{
     border-radius: 15px;
     margin: 10px 7.5px 10px 7.5px;
     transition: 0.2s;
-    box-shadow: 0 2px 5px black;
+    box-shadow: 0 2px 2px #002030;
 }
