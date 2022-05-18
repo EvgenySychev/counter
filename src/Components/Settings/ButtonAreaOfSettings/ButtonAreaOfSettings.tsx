@@ -4,6 +4,7 @@ import s from "./ButtonAreaOfSettings.module.css"
 type ButtonAreaOfSettingsPropsType = {
     setButton: () => void
     buttonIndicator:boolean
+    error:boolean
 }
 
 export function ButtonAreaOfSettings (props:ButtonAreaOfSettingsPropsType) {
@@ -13,7 +14,7 @@ export function ButtonAreaOfSettings (props:ButtonAreaOfSettingsPropsType) {
 
     return (
         <div className={s.buttonArea}>
-            <Button name={'set'} callBack={setButtonHandler} disabled={props.buttonIndicator}/>
+            <Button name={'set'} callBack={setButtonHandler} disabled={props.error || props.buttonIndicator}/>
         </div>
     )
 }

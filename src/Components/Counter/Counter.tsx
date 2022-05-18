@@ -9,6 +9,7 @@ type CounterPropsType = {
     counter: number
     setCounter: (counter: number) => void
     buttonIndicator: boolean
+    error: boolean
 }
 
 export function Counter(props: CounterPropsType) {
@@ -27,17 +28,6 @@ export function Counter(props: CounterPropsType) {
         props.setCounter(counter)
     }
 
-    const noticeMessage = (start: number, max: number) => {
-        let err: boolean
-        if (max === start) {
-            err = true
-        } else {
-            err = start < 0;
-        }
-        return err
-    }
-    let error = noticeMessage(props.startValue, props.maxValue)
-
     return (
         <div className={s.counter}>
             <div>
@@ -45,7 +35,7 @@ export function Counter(props: CounterPropsType) {
                     counter={props.counter}
                     maxValue={props.maxValue}
                     buttonIndicator={props.buttonIndicator}
-                    error={error}
+                    error={props.error}
                 />
             </div>
             <div>

@@ -9,6 +9,7 @@ type SettingsPropsType = {
     buttonIndicator: boolean
     startInputValue: number
     maxInputValue: number
+    error:boolean
 }
 
 export function Settings(props: SettingsPropsType) {
@@ -26,7 +27,9 @@ export function Settings(props: SettingsPropsType) {
             <div className={s.buttonAreaOfSettings}>
                 <ButtonAreaOfSettings
                     setButton={props.setValue}
-                    buttonIndicator={props.buttonIndicator}/>
+                    buttonIndicator={props.buttonIndicator}
+                    error={props.error}
+                />
             </div>
         </div>
     )
