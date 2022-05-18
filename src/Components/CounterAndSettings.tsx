@@ -11,6 +11,7 @@ export function CounterAndSettings() {
     const [counter, setCounter] = useState<number>(0)
     const [buttonIndicator, setButtonIndicator] = useState<boolean>(true)
 
+
     useEffect(() => {
         let startValueAsString = localStorage.getItem('startValue')
         if (startValueAsString) {
