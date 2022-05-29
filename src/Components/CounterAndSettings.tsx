@@ -49,7 +49,6 @@ export function CounterAndSettings() {
     const setCounterHandler = (c: number) => {
         setCounter(c)
     }
-
     const noticeMessage = (start: number, max: number) => {
         let err: boolean
         if (max <= start) {
@@ -61,7 +60,6 @@ export function CounterAndSettings() {
         return err
     }
     let error = noticeMessage(startInputValue, maxInputValue)
-
 
     return (
         <div className={s.counterAndSettings}>

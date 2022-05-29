@@ -12,14 +12,12 @@ type CounterPropsType = {
     error: boolean
 }
 
-export function Counter(props: CounterPropsType) {
-
-    let counter = props.counter
+export function Counter({counter,...props}: CounterPropsType) {
 
     const callBack = (nameOfButton: 'inc' | 'reset') => {
 
-        if (counter < props.maxValue) {
-            nameOfButton === 'inc' ? counter++ : counter = props.startValue
+        if (counter < props.maxValue && nameOfButton === 'inc') {
+            counter++
         }
 
         if (nameOfButton === 'reset') {
@@ -32,7 +30,7 @@ export function Counter(props: CounterPropsType) {
         <div className={s.counter}>
             <div>
                 <Display
-                    counter={props.counter}
+                    counter={counter}
                     maxValue={props.maxValue}
                     buttonIndicator={props.buttonIndicator}
                     error={props.error}
@@ -40,7 +38,7 @@ export function Counter(props: CounterPropsType) {
             </div>
             <div>
                 <ButtonAreaOfCounter
-                    counter={props.counter}
+                    counter={counter}
                     maxValue={props.maxValue}
                     startValue={props.startValue}
                     callBack={callBack}
