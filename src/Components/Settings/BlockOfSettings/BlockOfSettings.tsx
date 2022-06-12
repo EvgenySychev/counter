@@ -2,24 +2,21 @@ import s from "./BlockOfSettings.module.css"
 import {Input} from "../../UniversalComponents/Input";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../Redux/store";
-import {setMaxInputValueAC, setStartInputValueAC} from "../../../Redux/counter-reduser";
+import {setErrorAC, setMaxInputValueAC, setStartInputValueAC, setToggleAC} from "../../../Redux/counter-reduser";
 
-type BlockOfSettingsPropsType = {
-    //callBackMaxValue: (maxInputValue: string) => void
-    //callBackStartValue: (startInputValue: string) => void
-    //startInputValue: number
-    //maxInputValue: number
-}
-
-export function BlockOfSettings(props: BlockOfSettingsPropsType) {
+export function BlockOfSettings() {
 
     let startInputValue = useSelector<AppStateType,number>(state => state.counterState.startInputValue)
     let maxInputValue = useSelector<AppStateType,number>(state => state.counterState.maxInputValue)
+    let toggle = useSelector<AppStateType,boolean>(state => state.counterState.toggle)
     const dispatch = useDispatch()
-
 
     let strStartInputValue = JSON.stringify(startInputValue)
     let strMaxInputValue = JSON.stringify(maxInputValue)
+
+    dispatch(setErrorAC(startInputValue,maxInputValue,toggle))
+
+    let inputClass:string = (maxInputValue <= startInputValue || startInputValue < 0) && toggle ? s.error : s.input
 
     return (
         <div className={s.blockOfSettings}>
@@ -28,8 +25,11 @@ export function BlockOfSettings(props: BlockOfSettingsPropsType) {
                     max value
                 </span>
                 <Input
-                    callBack={(inputValue: string) => dispatch(setMaxInputValueAC(inputValue))}
-                    inputClass={maxInputValue <= startInputValue ? `${s.error}` : `${s.input}`}
+                    callBack={(inputValue: string) => {
+                        dispatch(setMaxInputValueAC(inputValue))
+                        dispatch(setToggleAC())}
+                    }
+                    inputClass={inputClass}
                     value={strMaxInputValue}
                 />
             </div>
@@ -38,8 +38,11 @@ export function BlockOfSettings(props: BlockOfSettingsPropsType) {
                     start value
                 </span>
                 <Input
-                    callBack={(inputValue: string) => dispatch(setStartInputValueAC(inputValue))}
-                    inputClass={startInputValue < 0 ? `${s.error}` : `${s.input}`}
+                    callBack={(inputValue: string) => {
+                        dispatch(setStartInputValueAC(inputValue))
+                        dispatch(setToggleAC())}
+                    }
+                    inputClass={inputClass}
                     value={strStartInputValue}
                 />
             </div>

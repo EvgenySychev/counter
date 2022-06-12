@@ -1,11 +1,22 @@
 
 
+export type incValueActionType = ReturnType<typeof incValueAC>
+export type resetValueActionType = ReturnType<typeof resetValueAC>
+export type setMaxInputValueActionType = ReturnType<typeof setMaxInputValueAC>
+export type setStartInputValueActionType = ReturnType<typeof setStartInputValueAC>
+export type setValueActionType = ReturnType<typeof setValueAC>
+export type setToggleActionType = ReturnType<typeof setToggleAC>
+export type setErrorActionType = ReturnType<typeof setErrorAC>
+
+export type ActionType = incValueActionType|resetValueActionType|setMaxInputValueActionType|setStartInputValueActionType|setValueActionType|setErrorActionType|setToggleActionType
+
 const initialState = {
     counter:0,
     startInputValue:0,
     maxInputValue:0,
     buttonIndicator:false,
-    error:true
+    error:false,
+    toggle:false
 }
 
 type InitialStateType = typeof initialState
@@ -40,13 +51,18 @@ export const counterReducer = (state:InitialStateType = initialState,action:Acti
         }
         case "SET-ERROR": {
             let err: boolean
-            if (action.maxInputValue <= action.startInputValue) {
+            if (action.maxInputValue <= action.startInputValue && action.toggle) {
                 err = true
             } else {
                 err = action.startInputValue < 0;
             }
             return {
                 ...state, error: err
+            }
+        }
+        case "SET-TOGGLE": {
+            return {
+                ...state, toggle: true
             }
         }
         default:
@@ -59,14 +75,6 @@ export const resetValueAC = (startInputValue:number) => ({type:'RESET-VALUE', st
 export const setMaxInputValueAC = (maxInputValue:string) => ({type: 'SET-MAX-INPUT-VALUE',maxInputValue} as const)
 export const setStartInputValueAC = (startInputValue:string) => ({type: 'SET-START-INPUT-VALUE',startInputValue} as const)
 export const setValueAC = () => ({type: 'SET-VALUE'} as const)
-export const setErrorAC = (startInputValue:number,maxInputValue:number) => ({type: 'SET-ERROR',startInputValue,maxInputValue } as const)
+export const setToggleAC = () => ({type: 'SET-TOGGLE'} as const)
+export const setErrorAC = (startInputValue:number,maxInputValue:number,toggle:boolean) => ({type: 'SET-ERROR',startInputValue,maxInputValue,toggle } as const)
 
-export type incValueActionType = ReturnType<typeof incValueAC>
-export type resetValueActionType = ReturnType<typeof resetValueAC>
-export type setMaxInputValueActionType = ReturnType<typeof setMaxInputValueAC>
-export type setStartInputValueActionType = ReturnType<typeof setStartInputValueAC>
-export type setValueActionType = ReturnType<typeof setValueAC>
-export type setErrorActionType = ReturnType<typeof setErrorAC>
-
-
-export type ActionType = incValueActionType|resetValueActionType|setMaxInputValueActionType|setStartInputValueActionType|setValueActionType|setErrorActionType

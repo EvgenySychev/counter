@@ -3,14 +3,7 @@ import s from "./Display.module.css"
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../../Redux/store";
 
-/*type DisplayPropsType = {
-    counter: number
-    maxValue: number
-    buttonIndicator: boolean
-    error: boolean
-}*/
-
-export function Display(/*props: DisplayPropsType*/) {
+export function Display() {
     let error = useSelector<AppStateType,boolean>(state => state.counterState.error)
     let buttonIndicator = useSelector<AppStateType,boolean>(state => state.counterState.buttonIndicator)
     let counter = useSelector<AppStateType,number>(state => state.counterState.counter)

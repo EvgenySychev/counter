@@ -5,6 +5,14 @@ const rootReducer = combineReducers ({
     counterState: counterReducer
 })
 
-export type AppStateType = ReturnType<typeof rootReducer>
+let preloaderState
+const persistedTodoString = localStorage.getItem('app-state')
+if (persistedTodoString) {
+    preloaderState = JSON.parse(persistedTodoString)
+}
 
-export const store = createStore(rootReducer)
+export const store = createStore(rootReducer,preloaderState)
+
+store.subscribe(()=> {localStorage.setItem('app-state', JSON.stringify(store.getState()))})
+
+export type AppStateType = ReturnType<typeof rootReducer>
