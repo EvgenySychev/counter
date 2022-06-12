@@ -2,15 +2,22 @@ import {Settings} from "./Settings/Settings";
 import {Counter} from "./Counter/Counter";
 import React, {useEffect, useState} from "react";
 import s from "./CounterAndSettings.module.css"
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../Redux/store";
+import {incValueAC, setErrorAC} from "../Redux/counter-reduser";
 
 
 export function CounterAndSettings() {
 
-    const [maxInputValue, setMaxInputValue] = useState<number>(0)
+    /*const [maxInputValue, setMaxInputValue] = useState<number>(0)
     const [startInputValue, setStartInputValue] = useState<number>(0)
     const [counter, setCounter] = useState<number>(0)
-    const [buttonIndicator, setButtonIndicator] = useState<boolean>(true)
+    const [buttonIndicator, setButtonIndicator] = useState<boolean>(true)*/
 
+    let startInputValue = useSelector<AppStateType,number>(state => state.counterState.startInputValue)
+    let maxInputValue = useSelector<AppStateType,number>(state => state.counterState.maxInputValue)
+    const dispatch = useDispatch()
+/*
 
     useEffect(() => {
         let startValueAsString = localStorage.getItem('startValue')
@@ -29,8 +36,9 @@ export function CounterAndSettings() {
             setCounter(newValue)
         }
     }, [])
+*/
 
-    const callBackMaxValue = (max: string) => {
+   /* const callBackMaxValue = (max: string) => {
         let maxValue = Number(max)
         setMaxInputValue(maxValue)
         setButtonIndicator(false)
@@ -39,16 +47,16 @@ export function CounterAndSettings() {
         let startValue = Number(start)
         setStartInputValue(startValue)
         setButtonIndicator(false)
-    }
-    const setValue = () => {
+    }*/
+    /*const setValue = () => {
         setButtonIndicator(true)
         setCounter(startInputValue)
         localStorage.setItem('maxValue', JSON.stringify(maxInputValue))
         localStorage.setItem('startValue', JSON.stringify(startInputValue))
-    }
-    const setCounterHandler = (c: number) => {
+    }*/
+    /*const setCounterHandler = (c: number) => {
         setCounter(c)
-    }
+    }*/
     const noticeMessage = (start: number, max: number) => {
         let err: boolean
         if (max <= start) {
@@ -59,26 +67,26 @@ export function CounterAndSettings() {
 
         return err
     }
-    let error = noticeMessage(startInputValue, maxInputValue)
+    let error = dispatch(setErrorAC(startInputValue,maxInputValue))
 
     return (
         <div className={s.counterAndSettings}>
             <Settings
-                setValue={setValue}
-                callBackMaxValue={callBackMaxValue}
-                callBackStartValue={callBackStartInputValue}
-                buttonIndicator={buttonIndicator}
-                startInputValue={startInputValue}
-                maxInputValue={maxInputValue}
-                error={error}
+                //setValue={setValue}
+                //callBackMaxValue={callBackMaxValue}
+                //callBackStartValue={callBackStartInputValue}
+                //buttonIndicator={buttonIndicator}
+                //startInputValue={startInputValue}
+                //maxInputValue={maxInputValue}
+                //error={error}
             />
             <Counter
-                counter={counter}
-                maxValue={maxInputValue}
-                startValue={startInputValue}
-                setCounter={setCounterHandler}
-                buttonIndicator={buttonIndicator}
-                error={error}
+                //counter={counter}
+                //maxValue={maxInputValue}
+                //startValue={startInputValue}
+                //setCounter={setCounterHandler}
+                //buttonIndicator={buttonIndicator}
+                //error={error}
             />
         </div>
     )
