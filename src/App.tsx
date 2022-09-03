@@ -1,15 +1,12 @@
 import React from 'react';
-import './App.css';
 import {CounterAndSettings} from "./Components/CounterAndSettings";
 
 
-function App() {
+export const App = () => {
 
     return (
-        <div className= "App">
+        <div>
             <CounterAndSettings/>
         </div>
     );
-}
-
-export default App;
+};
